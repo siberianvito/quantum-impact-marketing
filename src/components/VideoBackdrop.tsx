@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { prefersReduced } from "@/lib/gsap";
+import { asset } from "@/lib/asset";
 
 /**
  * Cinematic ambient video layer.
@@ -46,7 +47,7 @@ export default function VideoBackdrop({
       if (onScreen && !paused) {
         if (!loaded) {
           loaded = true;
-          video.src = src;
+          video.src = asset(src);
           video.load();
         }
         // A finished one-shot film stays frozen on its last frame
@@ -73,7 +74,7 @@ export default function VideoBackdrop({
       {/* Poster underlay — always present, zero layout shift */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={poster}
+        src={asset(poster)}
         alt=""
         className="absolute inset-0 h-full w-full object-cover"
         draggable={false}
@@ -85,7 +86,7 @@ export default function VideoBackdrop({
           loop={loop}
           playsInline
           preload="none"
-          poster={poster}
+          poster={asset(poster)}
           onCanPlay={() => setReady(true)}
           onEnded={() => {
             if (!loop) endedRef.current = true;

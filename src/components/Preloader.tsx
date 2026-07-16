@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { gsap, prefersReduced } from "@/lib/gsap";
+import { asset } from "@/lib/asset";
 import QuantumLogo from "@/components/QuantumLogo";
 
 const BOOT_LINES = [
@@ -232,8 +233,8 @@ export default function Preloader() {
         autoPlay
         preload="auto"
         disablePictureInPicture
-        src="/media/boot-neural.mp4"
-        poster="/media/boot-poster.webp"
+        src={asset("/media/boot-neural.mp4")}
+        poster={asset("/media/boot-poster.webp")}
         className="absolute inset-0 h-full w-full object-cover"
       />
       {/* Edge vignette keeps HUD legible over the film */}

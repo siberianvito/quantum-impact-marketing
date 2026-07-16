@@ -4,6 +4,8 @@
  * compatibility; sizing comes from the className (object-contain preserves
  * the mark's proportions inside any box).
  */
+import { asset } from "@/lib/asset";
+
 export default function QuantumLogo({
   className = "",
 }: {
@@ -13,7 +15,7 @@ export default function QuantumLogo({
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src="/logo.png"
+      src={asset("/logo.png")}
       alt=""
       aria-hidden="true"
       draggable={false}

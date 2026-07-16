@@ -1,6 +1,7 @@
 "use client";
 
 import { SYSTEMS } from "@/lib/data";
+import { asset } from "@/lib/asset";
 import { SectionTag, SplitHeading, Reveal, useGlowCards } from "@/components/ui";
 
 const ICONS: Record<string, React.ReactNode> = {
@@ -32,7 +33,7 @@ export default function Systems() {
       {/* Neural-grid still, masked into the darkness */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/media/neural-grid.webp"
+        src={asset("/media/neural-grid.webp")}
         alt=""
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.14] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_35%,black,transparent_75%)]"
