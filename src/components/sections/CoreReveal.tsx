@@ -67,6 +67,7 @@ export default function CoreReveal() {
               src="/media/core-reveal.mp4"
               poster="/media/core-reveal.webp"
               veil
+              loop={false}
               className="opacity-90"
             />
           </div>

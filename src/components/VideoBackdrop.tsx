@@ -16,6 +16,7 @@ export default function VideoBackdrop({
   veil = true,
   priority = false,
   paused = false,
+  loop = true,
 }: {
   src: string;
   poster: string;
@@ -24,9 +25,12 @@ export default function VideoBackdrop({
   priority?: boolean;
   /** Force-pause even while on screen (e.g. film hidden behind stage fades) */
   paused?: boolean;
+  /** false = play once and hold the final frame (no snap-back) */
+  loop?: boolean;
 }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const endedRef = useRef(false);
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
 
@@ -45,7 +49,8 @@ export default function VideoBackdrop({
           video.src = src;
           video.load();
         }
-        video.play().catch(() => {});
+        // A finished one-shot film stays frozen on its last frame
+        if (loop || !endedRef.current) video.play().catch(() => {});
       } else if (!video.paused) {
         video.pause();
       }
@@ -77,11 +82,14 @@ export default function VideoBackdrop({
         <video
           ref={videoRef}
           muted
-          loop
+          loop={loop}
           playsInline
           preload="none"
           poster={poster}
           onCanPlay={() => setReady(true)}
+          onEnded={() => {
+            if (!loop) endedRef.current = true;
+          }}
           onError={() => setFailed(true)}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1400ms] ease-out ${
             ready ? "opacity-100" : "opacity-0"
