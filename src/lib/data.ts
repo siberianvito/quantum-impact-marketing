@@ -160,6 +160,6 @@ export const PROCESS_STEPS = [
 ];
 
 export const CONTACT = {
-  email: "hello@quantumimpactmarketing.com", // TODO: replace with live email
-  phone: "(305) 000-0000", // TODO: replace with live phone
+  email: "vito@quantumimpactmarketing.com",
+  phone: "(786) 806-9212",
 };
