@@ -57,12 +57,18 @@ export default function FinalCTA() {
         </div>
       </Reveal>
 
-      {/* Watermark */}
-      <div
-        className="pointer-events-none absolute bottom-6 left-1/2 w-full -translate-x-1/2 select-none whitespace-nowrap text-center font-display text-[clamp(2rem,7.5vw,7rem)] font-black uppercase leading-none tracking-tight text-outline opacity-40"
-        aria-hidden="true"
-      >
-        Systems Scale. Chaos Doesn&rsquo;t.
+      {/* Watermark — endless sleek glide */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-6 select-none overflow-hidden" aria-hidden="true">
+        <div className="flex w-max animate-marquee [animation-duration:56s]">
+          {[0, 1].map((i) => (
+            <span
+              key={i}
+              className="whitespace-nowrap pr-[8vw] font-display text-[clamp(2rem,7.5vw,7rem)] font-black uppercase leading-none tracking-tight text-outline opacity-40"
+            >
+              Systems Scale. Chaos Doesn&rsquo;t.
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );
