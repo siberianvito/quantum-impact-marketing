@@ -59,6 +59,7 @@ export const metadata: Metadata = {
     images: ["/media/og-core.png"],
   },
   robots: { index: true, follow: true },
+  alternates: { canonical: "/" },
 };
 
 export const viewport: Viewport = {
